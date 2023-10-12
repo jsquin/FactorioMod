@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "factorio",
+  "pattern": [
+    " E ",
+    "EXE",
+    " E "
+  ],
+  "key": {
+    "E": {
+      "item": "factoriomod:copper_cable"
+    },
+    "X": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "result": {
+    "item": "factoriomod:electronic_circuit",
+    "count": 1
+  }
+}
