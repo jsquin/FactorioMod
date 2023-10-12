@@ -1,5 +1,7 @@
 package com.example.factoriomod;
 
+import com.example.factoriomod.init.CreativeTabInit;
+import com.example.factoriomod.init.ItemInit;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.registries.Registries;
@@ -29,7 +31,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import org.slf4j.Logger;
 
-import static com.example.factoriomod.Registration.copper_cable;
+import static com.example.factoriomod.init.ItemInit.copper_cable;
 
 @Mod(FactorioMod.MODID)
 public class FactorioMod
@@ -38,47 +40,35 @@ public class FactorioMod
     public static final String MODID = "factoriomod";
     private static final Logger LOGGER = LogUtils.getLogger();
 
-    public static final RegistryObject<CreativeModeTab> ITEM_TAB = CREATIVE_MODE_TABS.register("factorio_items", () -> CreativeModeTab.builder()
-            .withTabsBefore(CreativeModeTabs.COMBAT)
-            .icon(() -> copper_cable.get().getDefaultInstance())
-            .displayItems((parameters, output) -> {
-                output.accept(copper_cable.get());
-            }).build());
+
     public FactorioMod()
     {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
-        Registration.init(modEventBus);
+        ItemInit.ITEMS.register(modEventBus);
+        CreativeTabInit.TABS.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
-        modEventBus.addListener(Registration::addCreative);
-
-
 
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)
     {
-        // Some common setup code
         LOGGER.info("HELLO FROM COMMON SETUP");
     }
 
-    // You can use SubscribeEvent and let the Event Bus discover methods to call
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event)
     {
-        // Do something when the server starts
         LOGGER.info("HELLO from server starting");
     }
 
-    // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
     @Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class ClientModEvents
     {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
-            // Some client setup code
             LOGGER.info("HELLO FROM CLIENT SETUP");
             LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
         }
