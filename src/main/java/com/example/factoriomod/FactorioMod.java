@@ -1,5 +1,6 @@
 package com.example.factoriomod;
 
+import com.example.factoriomod.init.BlockInit;
 import com.example.factoriomod.init.CreativeTabInit;
 import com.example.factoriomod.init.ItemInit;
 import com.mojang.logging.LogUtils;
@@ -31,8 +32,6 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import org.slf4j.Logger;
 
-import static com.example.factoriomod.init.ItemInit.copper_cable;
-
 @Mod(FactorioMod.MODID)
 public class FactorioMod
 {
@@ -47,6 +46,7 @@ public class FactorioMod
 
         ItemInit.ITEMS.register(modEventBus);
         CreativeTabInit.TABS.register(modEventBus);
+        BlockInit.BLOCKS.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
 

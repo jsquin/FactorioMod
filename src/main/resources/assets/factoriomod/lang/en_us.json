@@ -1,5 +1,9 @@
 {
   "item.factoriomod.copper_cable": "Copper Cable",
-  "item.factoriomod.electronic_circuit": "Electronic Circuit"
+  "item.factoriomod.electronic_circuit": "Electronic Circuit",
+  "item.factoriomod.iron_gear": "Iron Gear Wheel",
+
+
+  "block.factoriomod.assembler_1": "Assembling Machine 1"
 
 }

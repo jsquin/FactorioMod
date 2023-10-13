@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "factorio",
+  "pattern": [
+    "GGG",
+    "GIG",
+    "CCC"
+  ],
+  "key": {
+    "C": {
+      "item": "factoriomod:electronic_circuit"
+    },
+    "G": {
+      "item": "factoriomod:iron_gear"
+    },
+    "I": {
+      "item": "minecraft:iron_block"
+    }
+  },
+  "result": {
+    "item": "factoriomod:assembler_1",
+    "count": 1
+  }
+}

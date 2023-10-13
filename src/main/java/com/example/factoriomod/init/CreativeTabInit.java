@@ -5,6 +5,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 import net.minecraft.world.item.CreativeModeTab;
@@ -18,13 +19,23 @@ public class CreativeTabInit {
     public static final DeferredRegister<CreativeModeTab> TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, FactorioMod.MODID);
 
     public static final List<Supplier<? extends ItemLike>> factorio_item_tab_items = new ArrayList<>();
+    public static final List<Supplier<? extends ItemLike>> factorio_block_tab_items = new ArrayList<>();
 
-    public static final RegistryObject<CreativeModeTab> TAB = TABS.register("factorio_item_tab",
+    public static final RegistryObject<CreativeModeTab> ITEMTAB = TABS.register("factorio_item_tab",
             () -> CreativeModeTab.builder()
                     .title(Component.literal("Factorio Items"))
                     .icon(ItemInit.copper_cable.get()::getDefaultInstance)
                     .displayItems((displayParams, output) ->
                         factorio_item_tab_items.forEach(itemLike -> output.accept(itemLike.get())))
+                    .build()
+    );
+
+    public static final RegistryObject<CreativeModeTab> BLOCKTAB = TABS.register("factorio_block_tab",
+            () -> CreativeModeTab.builder()
+                    .title(Component.literal("Factorio Blocks"))
+                    .icon(ItemInit.assembler_1_item.get()::getDefaultInstance)
+                    .displayItems((displayParams, output) ->
+                            factorio_block_tab_items.forEach(itemLike -> output.accept(itemLike.get())))
                     .build()
     );
 
